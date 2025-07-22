@@ -1,0 +1,12 @@
+@use 'index';
+
+// FontAwesome
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/brands";
+// Si se requiere, se puede activar:
+// @import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+
+.testeo {
+  @apply text-blue-600 text-xl;
+}
