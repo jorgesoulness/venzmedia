@@ -7,8 +7,13 @@
   <link rel="stylesheet" href="css/style.min.css" />
 </head>
 <body class="bg-gray-100 text-center py-10">
-  <h1 class="text-3xl font-bold text-blue-600">¡Hola desde Gulp + Tailwind + jQuery!</h1>
-  <button id="boton" class="mt-5 px-4 py-2 bg-green-500 text-white rounded">Haz clic</button>
+  @@include('partials/header.html')
+  <main>
+    <h1 class="text-3xl font-bold text-blue-600">¡Hola desde Gulp + Tailwind + jQuery!</h1>
+    <button id="boton" class="mt-5 px-4 py-2 bg-green-500 text-white rounded">Haz clic</button>
+    <p class="testeo">¿Tailwind funciona?</p>
+  </main>
+  @@include('partials/footer.html')
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="js/main.min.js"></script>
 </body>

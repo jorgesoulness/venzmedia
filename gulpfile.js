@@ -10,6 +10,9 @@ const rename = require("gulp-rename");
 const browserSync = require("browser-sync").create();
 const { deleteSync } = require("del");
 const exec = require("child_process").exec;
+const postcss = require('gulp-postcss');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
 
 // Rutas
 const paths = {
@@ -17,7 +20,10 @@ const paths = {
   scss: "src/assets/scss/**/*.scss",
   js: "src/assets/js/**/*.js",
   img: "src/assets/img/**/*",
-  dist: "dist"
+  dist: "dist",
+  css: {
+    dest: "dist/css"
+  }
 };
 
 // Limpiar
@@ -38,12 +44,15 @@ function html() {
 }
 
 // CSS (Tailwind + Sass)
-function css(cb) {
-  exec("npx tailwindcss -i ./src/assets/scss/style.scss -o ./dist/css/style.min.css --minify", function(err, stdout, stderr) {
-    console.log(stdout);
-    console.error(stderr);
-    cb(err);
-  });
+function css() {
+  return src(['src/assets/scss/style.scss', 'src/assets/scss/global.scss'])
+    .pipe(sass({ includePaths: ['node_modules'] }).on('error', sass.logError))
+    .pipe(postcss([tailwindcss('./tailwind.config.js'), autoprefixer()]))
+    .pipe(concat('style.css'))
+    .pipe(cleanCSS())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(dest(`${paths.dist}/css`))
+    .pipe(browserSync.stream());
 }
 
 // JS
@@ -82,7 +91,13 @@ function serve() {
   watch(paths.img, images);
 }
 
+// Fonts
+function fonts() {
+  return src('node_modules/@fortawesome/fontawesome-free/webfonts/*')
+    .pipe(dest(`${paths.dist}/webfonts`));
+}
+
 // Tareas
 exports.clean = clean;
-exports.build = series(clean, parallel(html, css, js, images));
+exports.build = series(clean, parallel(html, css, js, images, fonts));
 exports.default = series(exports.build, serve);
