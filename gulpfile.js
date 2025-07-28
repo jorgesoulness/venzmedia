@@ -57,7 +57,10 @@ function css() {
 
 // JS
 function js() {
-  return src(paths.js)
+  return src([
+    'node_modules/jquery/dist/jquery.min.js', // Incluye jQuery
+    paths.js // Tus scripts personalizados
+  ])
     .pipe(sourcemaps.init())
     .pipe(concat("main.js"))
     .pipe(uglify())
