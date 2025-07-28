@@ -3,16 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VenzMedia - Demo</title>
+  <title>VenzMedia - Theme</title>
   <link rel="stylesheet" href="css/style.min.css" />
 </head>
-<body class="bg-gray-100 text-center py-10">
+<body class="bg-white text-center p-0 m-0">
   @@include('partials/header.html')
   <main>
-    <h1 class="text-3xl font-bold text-blue-600">¡Hola desde Gulp + Tailwind + jQuery!</h1>
-    <button id="boton" class="mt-5 px-4 py-2 bg-green-500 text-white rounded">Haz clic</button>
-    <p class="testeo">¿Tailwind funciona?</p>
-  </main>
+    <section class="hero">
+      <h1>We Build Brands</h1>
+      <p>Venz Media is a creative marketing agency that prioritizes the success of our clients.</p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Our Services</h2>
+      <div class="services">
+        <div class="card">
+          <h3>Digital</h3>
+          <ul>
+            <li>SEO</li>
+            <li>Google PPC</li>
+            <li>Web Development</li>
+            <li>E-Commerce</li>
+          </ul>
+          <img src="https://source.unsplash.com/400x250/?seo,digital" alt="digital" class="sample"/>
+        </div>
+        <div class="card">
+          <h3>Branding</h3>
+          <ul>
+            <li>Logo Design</li>
+            <li>Graphic Design</li>
+            <li>Brand Book</li>
+          </ul>
+          <img src="https://source.unsplash.com/400x250/?branding,design" alt="branding" class="sample"/>
+        </div>
+        <div class="card">
+          <h3>Creative Content</h3>
+          <ul>
+            <li>Video Production</li>
+            <li>Photography</li>
+            <li>Podcast</li>
+          </ul>
+          <img src="https://source.unsplash.com/400x250/?content,media" alt="creative content" class="sample"/>
+        </div>
+        <div class="card">
+          <h3>Consulting</h3>
+          <ul>
+            <li>AI Consulting</li>
+            <li>Marketing Consulting</li>
+          </ul>
+          <img src="https://source.unsplash.com/400x250/?consulting,ai" alt="consulting" class="sample"/>
+        </div>
+        <div class="card">
+          <h3>Media Buy</h3>
+          <ul>
+            <li>TV</li>
+            <li>Radio</li>
+            <li>Print</li>
+            <li>Streaming</li>
+          </ul>
+          <img src="https://source.unsplash.com/400x250/?media,ads" alt="media buy" class="sample"/>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p>"Venz Media was great! They helped me reach my goal of building my brand. If you're looking to grow your business, I recommend them."</p>
+      <p><strong>- Edgar Navarro</strong></p>
+    </section>
+
+    <section class="cta">
+      <h2>Have a Project?</h2>
+      <p>Let’s talk and build your brand together.</p>
+      <a href="#">Book Your Free Demo</a>
+    </section>
+  </main><!-- end.main -->
   @@include('partials/footer.html')
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="js/main.min.js"></script>
